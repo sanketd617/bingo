@@ -167,7 +167,7 @@ export class GameComponent {
   }
 
   bingo() {
-    if (this.game.p1.score >= 1) {
+    if (this.game.p1.score >= 5) {
       this.isBingo = true;
       if (this.player === 'p1') {
         Swal.fire('You win!').then((result) => {
@@ -179,7 +179,7 @@ export class GameComponent {
         });
       }
     }
-    if (this.game.p2.score >= 1) {
+    if (this.game.p2.score >= 5) {
       this.isBingo = true;
       if (this.player === 'p2') {
         Swal.fire('You win!').then((result) => {
