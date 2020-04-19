@@ -1,4 +1,6 @@
-
+<div class="notification-panel">
+  <app-notification-panel *ngIf="notificationIsVisible" [text]="notificationText"></app-notification-panel>
+</div>
 <div class="center">
     <div *ngIf="waiting">
         <h4>
@@ -13,10 +15,11 @@
         <div class="grid">
             <ng-container *ngFor="let cell of game[player].board; index as index; trackBy:trackingFn">
                 <div (click)="cellClicked(index)"
+                     [ngClass]="{'empty': cell === 0, 'crossed': crossed[cell]}"
                      [class.bounce]="bouncing && clickStack.length > 0 && clickStack[clickStack.length - 1] === index"
                      class="cell {{ xMap[index] }} {{ yMap[index] }}">
                   <div class="cellInnerContent">
-                    {{ cell === 0 ? '' : cell }}
+                    {{ cell === 0 ? lastSelected + 1 : cell }}
                   </div>
                 </div>
             </ng-container>
@@ -26,4 +29,14 @@
     <div *ngIf="loading">
         Loading
     </div>
+</div>
+<div class="bottom-sheet">
+  <app-selection-sheet
+    *ngIf="!selectionDone"
+    [text]="'Select #' + (lastSelected + 1)"
+    [undoDisabled]="clickStack.length === 0"
+    [doneDisabled]="clickStack.length !== 25"
+    (undo)="undo()"
+    (done)="doneSelection()"
+  ></app-selection-sheet>
 </div>

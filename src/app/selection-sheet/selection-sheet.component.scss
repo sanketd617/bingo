@@ -1,0 +1,27 @@
+.text-with-button {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+
+  .text {
+    flex-grow: 4;
+  }
+
+  .button {
+    flex-grow: 1;
+    text-align: center;
+    border: 2px solid #2196f3;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    color: #2196f3;
+    margin: 0 0.25rem;
+
+    &.disabled {
+      color: grey;
+      border-color: grey;
+    }
+  }
+}

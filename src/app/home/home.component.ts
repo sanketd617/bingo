@@ -30,55 +30,20 @@ export class HomeComponent {
     this.afs.collection('games').add({
       p1: {
         id: this.user.uid,
+        score: 0,
         board: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        crossed: []
       },
       p2: {
         id: null,
-        board: [],
-        crossed: []
+        score: 0,
+        board: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       },
-      turn: null
+      crossed: [],
+      turn: 'p1'
     }).then((response) => {
       this.router.navigate(['game/' + response.id]);
     }).catch((error) => {
       console.error(error);
     });
   }
-
-  join() {
-    Swal.fire({
-      title: 'Enter friend\'s username:',
-      input: 'text',
-      inputAttributes: {
-        autocapitalize: 'off'
-      },
-      showCancelButton: true,
-      confirmButtonText: 'Join',
-      showLoaderOnConfirm: true,
-      preConfirm: (login) => {
-        return fetch(`//api.github.com/users/${login}`)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          })
-          .catch(error => {
-            Swal.showValidationMessage(
-              `Request failed: ${error}`
-            )
-          })
-      },
-      allowOutsideClick: () => !Swal.isLoading()
-    }).then((result) => {
-      if (result.value) {
-        Swal.fire({
-          title: `${result.value.login}'s avatar`,
-          imageUrl: result.value.avatar_url
-        })
-      }
-    })
-  }
-
 }

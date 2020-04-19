@@ -1,0 +1,11 @@
+<div class="text-with-button">
+  <div class="text" *ngIf="doneDisabled">
+    {{ text }}
+  </div>
+  <div class="button" *ngIf="!doneDisabled" (click)="onDone()">
+    done
+  </div>
+  <div class="button" *ngIf="!undoDisabled" (click)="onUndo()">
+    undo
+  </div>
+</div>
