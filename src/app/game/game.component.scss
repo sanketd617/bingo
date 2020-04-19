@@ -1,0 +1,93 @@
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.grid {
+  width: 80vw;
+  height: 80vw;
+  //border: 1px solid grey;
+  position: relative;
+}
+
+.cell {
+  position: absolute;
+  display: inline-block;
+  width: 18%;
+  height: 18%;
+  border: 2px solid grey;
+  margin: 1%;
+  transition-duration: 0.15s;
+  border-radius: 0.25rem;
+  transition-timing-function: cubic-bezier(0.5, 0.1, 1, 0.5);
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+
+  .cellInnerContent {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.bounce {
+    background: grey;
+    transform: scale(0.8);
+  }
+}
+
+.x0 {
+  left: 0;
+}
+
+.x1 {
+  left: 20%;
+}
+
+.x2 {
+  left: 40%;
+}
+
+.x3 {
+  left: 60%;
+}
+
+.x4 {
+  left: 80%;
+}
+
+.y0 {
+  top: 0;
+}
+
+.y1 {
+  top: 20%;
+}
+
+.y2 {
+  top: 40%;
+}
+
+.y3 {
+  top: 60%;
+}
+
+.y4 {
+  top: 80%;
+}
+
+
+
+
+
+
+
+
+

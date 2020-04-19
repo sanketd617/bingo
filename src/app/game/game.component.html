@@ -1,0 +1,29 @@
+
+<div class="center">
+    <div *ngIf="waiting">
+        <h4>
+            Waiting for Opponent
+        </h4>
+        <div>
+            Copy game link
+        </div>
+    </div>
+
+    <div *ngIf="!waiting && !loading && !!game[player]">
+        <div class="grid">
+            <ng-container *ngFor="let cell of game[player].board; index as index; trackBy:trackingFn">
+                <div (click)="cellClicked(index)"
+                     [class.bounce]="bouncing && clickStack.length > 0 && clickStack[clickStack.length - 1] === index"
+                     class="cell {{ xMap[index] }} {{ yMap[index] }}">
+                  <div class="cellInnerContent">
+                    {{ cell === 0 ? '' : cell }}
+                  </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div *ngIf="loading">
+        Loading
+    </div>
+</div>
